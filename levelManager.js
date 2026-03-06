@@ -2,7 +2,7 @@ const levelMap = document.getElementById("levelMap");
 const levelTitle = document.getElementById("levelTitle");
 const gameContainer = document.getElementById("gameContainer");
 
-const totalLevels = 44;
+const totalLevels = 46;
 
 // Load saved progress or default to 1
 let unlockedLevel = parseInt(localStorage.getItem("unlockedLevel")) || 1;
@@ -169,7 +169,10 @@ function startLevel(levelNumber) {
     break;
     case 45:
       startLevel45(gameContainer, () => completeLevel(45));
-    break;  
+    break;
+    case 46:
+      startLevel46(gameContainer, () => completeLevel(46));
+    break;   
     default:
       gameContainer.innerHTML = "<p>Level not built yet.</p>";
   }
