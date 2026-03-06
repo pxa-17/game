@@ -1,5 +1,9 @@
 function startLevel30(container, onComplete){
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 30 – Escape Room</h2>
+    <p class="level-subtitle">Find the code to escape</p>
+    <div class="level-game-area">
   <style>
     .escape-room{
       width: 600px;
@@ -77,6 +81,8 @@ function startLevel30(container, onComplete){
     <input type="text" id="codeInput" class="code-input" maxlength="4" placeholder="Enter 4-digit code"/>
     <button class="submit-btn" id="submitCode">Unlock</button>
     <div class="message" id="message"></div>
+  </div>
+    </div>
   </div>
   `;
 

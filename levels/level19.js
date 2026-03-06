@@ -1,5 +1,9 @@
 function startLevel19(container, onComplete){
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 19 – Word Search</h2>
+    <p class="level-subtitle">Find the hidden words from clues</p>
+    <div class="level-game-area">
   <style>
     .wordsearch-container{
       display:flex;
@@ -72,6 +76,8 @@ function startLevel19(container, onComplete){
     <div class="word-list">
       <h3>Find the Word from Clues</h3>
       <ul id="wordList"></ul>
+    </div>
+  </div>
     </div>
   </div>
   `;

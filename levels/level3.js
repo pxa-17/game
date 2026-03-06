@@ -1,55 +1,60 @@
 function startLevel3(container, onComplete) {
 
     container.innerHTML = `
-      <h3>Dodge the Obstacles ⚡</h3>
-      <p>Move your character to avoid the falling obstacles!</p>
-      <div id="playArea3" style="position: relative; width: 300px; height: 400px; margin: auto; border: 2px solid #ff4da6; overflow: hidden; border-radius: 15px;"></div>
-      <p id="timer3">Time: 20</p>
+      <div class="level-card">
+        <h2 class="level-title">Level 3 – Dodge Obstacles ⚡</h2>
+        <p class="level-subtitle">Move your character to avoid the falling obstacles!</p>
+        <div class="level-game-area">
+          <div id="playArea3" style="position: relative; width: 100%; max-width: 300px; height: 350px; margin: auto; border: none; overflow: hidden; border-radius: 12px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);"></div>
+        </div>
+        <div class="level-stats">
+          <span>Time: <strong id="timer3">20</strong>s</span>
+        </div>
+      </div>
     `;
   
     const playArea = document.getElementById("playArea3");
     const timerDisplay = document.getElementById("timer3");
   
-    let timeLeft = 20; // seconds
+    let timeLeft = 20;
     let obstacles = [];
     let gameInterval;
     let spawnInterval;
     let timerInterval;
   
-    // Character (slightly smaller to increase difficulty)
     const character = document.createElement("div");
     character.style.position = "absolute";
-    character.style.width = "30px"; // smaller
+    character.style.width = "30px";
     character.style.height = "30px";
-    character.style.bottom = "0";
+    character.style.bottom = "10px";
     character.style.left = "135px";
-    character.style.background = "#ff4da6";
+    character.style.background = "linear-gradient(135deg, #ff4da6, #ff85c1)";
     character.style.borderRadius = "10px";
+    character.style.boxShadow = "0 0 15px rgba(255, 77, 166, 0.6)";
     playArea.appendChild(character);
   
-    // Spawn obstacles
     function createObstacle() {
       const obs = document.createElement("div");
       obs.style.position = "absolute";
-      const size = 20 + Math.random()*15; // random sizes 20–35
+      const size = 20 + Math.random() * 15;
       obs.style.width = size + "px";
       obs.style.height = size + "px";
       obs.style.top = "-40px";
       obs.style.left = Math.random() * (300 - size) + "px";
-      obs.style.background = "#ff1e4d";
+      obs.style.background = "linear-gradient(135deg, #ff1e4d, #ff6b6b)";
       obs.style.borderRadius = "50%";
+      obs.style.boxShadow = "0 0 10px rgba(255, 30, 77, 0.5)";
       playArea.appendChild(obs);
-      obstacles.push({el: obs, speed: 2 + Math.random() * 3}); // faster
+      obstacles.push({el: obs, speed: 2 + Math.random() * 3});
     }
   
-    spawnInterval = setInterval(createObstacle, 600); // spawn more often
+    spawnInterval = setInterval(createObstacle, 600);
   
-    // Movement
     const moveHandler = (e) => {
       const rect = playArea.getBoundingClientRect();
       let x = e.clientX - rect.left - 15;
       if (x < 0) x = 0;
-      if (x > 270) x = 270;
+      if (x > playArea.offsetWidth - 30) x = playArea.offsetWidth - 30;
       character.style.left = x + "px";
     };
   
@@ -57,23 +62,21 @@ function startLevel3(container, onComplete) {
       const rect = playArea.getBoundingClientRect();
       let x = e.touches[0].clientX - rect.left - 15;
       if (x < 0) x = 0;
-      if (x > 270) x = 270;
+      if (x > playArea.offsetWidth - 30) x = playArea.offsetWidth - 30;
       character.style.left = x + "px";
     };
   
     window.addEventListener("mousemove", moveHandler);
     window.addEventListener("touchmove", touchHandler);
   
-    // Game loop
     function update() {
       obstacles.forEach((obsObj, index) => {
         let top = parseFloat(obsObj.el.style.top);
         top += obsObj.speed;
         obsObj.el.style.top = top + "px";
   
-        // Collision detection
         const charX = parseFloat(character.style.left);
-        const charY = 370;
+        const charY = playArea.offsetHeight - 40;
         const charSize = 30;
         if (
           top + parseFloat(obsObj.el.style.height) > charY &&
@@ -81,7 +84,6 @@ function startLevel3(container, onComplete) {
           parseFloat(obsObj.el.style.left) + parseFloat(obsObj.el.style.width) > charX &&
           parseFloat(obsObj.el.style.left) < charX + charSize
         ) {
-          // Hit detected
           clearInterval(spawnInterval);
           clearInterval(timerInterval);
           cancelAnimationFrame(gameInterval);
@@ -93,10 +95,9 @@ function startLevel3(container, onComplete) {
           startLevel3(container, onComplete);
         }
   
-        // Remove off-screen obstacles
-        if (top > 400) {
+        if (top > playArea.offsetHeight) {
           obsObj.el.remove();
-          obstacles.splice(index,1);
+          obstacles.splice(index, 1);
         }
       });
   
@@ -105,10 +106,13 @@ function startLevel3(container, onComplete) {
   
     gameInterval = requestAnimationFrame(update);
   
-    // Timer countdown
     timerInterval = setInterval(() => {
       timeLeft--;
-      timerDisplay.innerText = `Time: ${timeLeft}`;
+      timerDisplay.innerText = timeLeft;
+      
+      if (timeLeft <= 10) {
+        timerDisplay.classList.add("timer-warning");
+      }
   
       if (timeLeft <= 0) {
         clearInterval(spawnInterval);
@@ -118,6 +122,7 @@ function startLevel3(container, onComplete) {
         obstacles = [];
         window.removeEventListener("mousemove", moveHandler);
         window.removeEventListener("touchmove", touchHandler);
+        timerDisplay.classList.remove("timer-warning");
         onComplete();
       }
     }, 1000);

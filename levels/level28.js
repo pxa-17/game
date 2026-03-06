@@ -1,6 +1,10 @@
 function startLevel28(container, onComplete){
 
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 28 – Word Builder</h2>
+    <p class="level-subtitle">Form words from letters</p>
+    <div class="level-game-area">
   <style>
     .word-builder-card{
       width: 500px;
@@ -89,6 +93,8 @@ function startLevel28(container, onComplete){
     <button class="delete-btn" id="deleteLetter">Delete Last Letter</button>
     <div class="message" id="message"></div>
     <div class="found-words" id="foundWords"></div>
+  </div>
+    </div>
   </div>
   `;
 

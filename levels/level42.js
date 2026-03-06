@@ -1,6 +1,10 @@
 function startLevel42(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 42 – Shape Match</h2>
+    <p class="level-subtitle">Turn all the lights on to win</p>
+    <div class="level-game-area">
+    <style>
     .lights-game{
       width: 400px;
       margin: 30px auto;
@@ -55,21 +59,23 @@ function startLevel42(container, onComplete){
     .reset-btn:hover{
       background:#ff99aa;
     }
-  </style>
+    </style>
 
-  <div class="lights-game">
-    <h3>Level 42 – Switch the Lights</h3>
-    <div class="instructions">
-      <strong>Instructions:</strong><br>
-      1. Turn all tiles ON (bright pastel green).<br>
-      2. Click a tile to toggle it and its adjacent tiles (up, down, left, right).<br>
-      3. Plan carefully; wrong moves can undo progress.<br>
-      4. Puzzle starts solvable each time.<br>
-      5. Complete the level when all tiles are ON.
+    <div class="lights-game">
+      <h3>Level 42 – Switch the Lights</h3>
+      <div class="instructions">
+        <strong>Instructions:</strong><br>
+        1. Turn all tiles ON (bright pastel green).<br>
+        2. Click a tile to toggle it and its adjacent tiles (up, down, left, right).<br>
+        3. Plan carefully; wrong moves can undo progress.<br>
+        4. Puzzle starts solvable each time.<br>
+        5. Complete the level when all tiles are ON.
+      </div>
+      <button class="reset-btn" id="resetBtn">Reset</button>
+      <div class="grid" id="grid"></div>
+      <div class="message" id="message"></div>
     </div>
-    <button class="reset-btn" id="resetBtn">Reset</button>
-    <div class="grid" id="grid"></div>
-    <div class="message" id="message"></div>
+    </div>
   </div>
   `;
 

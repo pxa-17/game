@@ -4,41 +4,47 @@ let score = 0;
 const required = 3;
 
 container.innerHTML = `
-<style>
+<div class="level-card">
+  <h2 class="level-title">Level 45 – Color Switch</h2>
+  <p class="level-subtitle">Catch the star to advance</p>
+  <div class="level-game-area">
+  <style>
 
-.area{
-  position:relative;
-  width:420px;
-  height:300px;
-  margin:30px auto;
-  background:#000; /* change to #fff if you want white */
-  border-radius:10px;
-  overflow:hidden;
-}
+  .area{
+    position:relative;
+    width:420px;
+    height:300px;
+    margin:30px auto;
+    background:#000;
+    border-radius:10px;
+    overflow:hidden;
+  }
 
-.star{
-  position:absolute;
-  font-size:28px;
-  cursor:pointer;
-  user-select:none;
-  transition:left 0.5s, top 0.5s;
-}
+  .star{
+    position:absolute;
+    font-size:28px;
+    cursor:pointer;
+    user-select:none;
+    transition:left 0.5s, top 0.5s;
+  }
 
-.info{
-  text-align:center;
-  margin-top:10px;
-  font-weight:bold;
-}
+  .info{
+    text-align:center;
+    margin-top:10px;
+    font-weight:bold;
+  }
 
-</style>
+  </style>
 
-<div style="text-align:center;font-size:22px;font-weight:bold">
-Level 45
+  <div style="text-align:center;font-size:22px;font-weight:bold">
+  Level 45
+  </div>
+
+  <div class="info" id="info">Catch the ⭐ (0/3)</div>
+
+  <div class="area" id="area"></div>
+  </div>
 </div>
-
-<div class="info" id="info">Catch the ⭐ (0/3)</div>
-
-<div class="area" id="area"></div>
 `;
 
 const area = container.querySelector("#area");

@@ -1,6 +1,10 @@
 function startLevel23(container, onComplete){
 
 container.innerHTML = `
+<div class="level-card">
+  <h2 class="level-title">Level 23 – Number Memory</h2>
+  <p class="level-subtitle">Remember the sequence</p>
+  <div class="level-game-area">
 <style>
 .memory-wrapper{
   text-align:center;
@@ -48,6 +52,8 @@ button{
   <br>
   <button id="submitBtn" disabled>Submit</button>
   <div class="message" id="message"></div>
+</div>
+  </div>
 </div>
 `;
 

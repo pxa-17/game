@@ -1,6 +1,10 @@
 function startLevel43(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 43 – Sequence Memory</h2>
+    <p class="level-subtitle">Remember and repeat the emoji sequence</p>
+    <div class="level-game-area">
+    <style>
     .emoji-memory-game{
       width: 400px;
       margin: 30px auto;
@@ -44,14 +48,16 @@ function startLevel43(container, onComplete){
       color:#a3ffb3;
       font-weight:bold;
     }
-  </style>
+    </style>
 
-  <div class="emoji-memory-game">
-    <h3>Level 43 – Emoji Sequence Memory</h3>
-    <div class="counter" id="counter">Correct Sequences: 0 / 5</div>
-    <div class="sequence-display" id="sequenceDisplay"></div>
-    <div class="emoji-pool" id="emojiPool"></div>
-    <div class="message" id="message"></div>
+    <div class="emoji-memory-game">
+      <h3>Level 43 – Emoji Sequence Memory</h3>
+      <div class="counter" id="counter">Correct Sequences: 0 / 5</div>
+      <div class="sequence-display" id="sequenceDisplay"></div>
+      <div class="emoji-pool" id="emojiPool"></div>
+      <div class="message" id="message"></div>
+    </div>
+    </div>
   </div>
   `;
 

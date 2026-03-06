@@ -1,6 +1,10 @@
 function startLevel21(container, onComplete){
 
 container.innerHTML = `
+<div class="level-card">
+  <h2 class="level-title">Level 21 – Sudoku</h2>
+  <p class="level-subtitle">Medium difficulty puzzle</p>
+  <div class="level-game-area">
 <style>
 .sudoku-container{
   text-align:center;
@@ -72,6 +76,8 @@ container.innerHTML = `
   <div class="sudoku-grid" id="grid"></div>
   <div class="message" id="message"></div>
   <button class="restart-btn" id="restartBtn">Restart</button>
+</div>
+  </div>
 </div>
 `;
 

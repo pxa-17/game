@@ -1,6 +1,10 @@
 function startLevel41(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 41 – Color Catcher</h2>
+    <p class="level-subtitle">Catch the falling colored balls</p>
+    <div class="level-game-area">
+    <style>
     .color-catcher-game{
       width: 400px;
       margin: 30px auto;
@@ -44,12 +48,14 @@ function startLevel41(container, onComplete){
       margin-top:10px;
       font-weight:bold;
     }
-  </style>
+    </style>
 
-  <div class="color-catcher-game">
-    <h3>Level 41 – Color Catcher</h3>
-    <div class="status">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></div>
-    <div class="game-area" id="gameArea"></div>
+    <div class="color-catcher-game">
+      <h3>Level 41 – Color Catcher</h3>
+      <div class="status">Score: <span id="score">0</span> | Lives: <span id="lives">3</span></div>
+      <div class="game-area" id="gameArea"></div>
+    </div>
+    </div>
   </div>
   `;
 

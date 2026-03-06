@@ -15,27 +15,31 @@ function startLevel44(container, onComplete) {
   ];
 
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 44 – Color Switch</h2>
+    <p class="level-subtitle">Find the odd emoji in each round</p>
+    <div class="level-game-area">
     <style>
-      .emoji-grid{
-        display:grid;
-        grid-template-columns: repeat(8, 50px);
-        gap:10px;
-        justify-content:center;
-        margin-top:20px;
-      }
+    .emoji-grid{
+      display:grid;
+      grid-template-columns: repeat(8, 50px);
+      gap:10px;
+      justify-content:center;
+      margin-top:20px;
+    }
 
-      .emoji-cell{
-        font-size:32px;
-        cursor:pointer;
-        text-align:center;
-        user-select:none;
-      }
+    .emoji-cell{
+      font-size:32px;
+      cursor:pointer;
+      text-align:center;
+      user-select:none;
+    }
 
-      .message{
-        text-align:center;
-        margin-top:10px;
-        font-weight:bold;
-      }
+    .message{
+      text-align:center;
+      margin-top:10px;
+      font-weight:bold;
+    }
     </style>
 
     <div style="text-align:center;font-size:22px;font-weight:bold">
@@ -45,6 +49,8 @@ function startLevel44(container, onComplete) {
     <div class="message" id="roundInfo"></div>
     <div class="emoji-grid" id="emojiGrid"></div>
     <div class="message" id="message"></div>
+    </div>
+  </div>
   `;
 
   const grid = container.querySelector("#emojiGrid");

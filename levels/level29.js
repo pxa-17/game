@@ -1,5 +1,9 @@
 function startLevel29(container, onComplete) {
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 29 – Speed Typing</h2>
+    <p class="level-subtitle">Type the words quickly</p>
+    <div class="level-game-area">
   <style>
     .speed-typing-card{
       width: 600px;
@@ -59,6 +63,8 @@ function startLevel29(container, onComplete) {
     <button class="start-btn" id="startBtn">Start Game</button>
     <div class="message" id="message"></div>
     <div class="scoreboard" id="scoreboard"></div>
+  </div>
+    </div>
   </div>
   `;
 

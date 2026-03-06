@@ -1,10 +1,17 @@
 function startLevel1(container, onComplete) {
 
   container.innerHTML = `
-    <h3>Collect 10 Stars ⭐</h3>
-    <div id="playArea" style="position: relative; width: 300px; height: 400px; margin: auto; border: 2px solid #ff4da6; overflow: hidden; border-radius: 15px;"></div>
-    <p id="score">Score: 0</p>
-    <p id="timer">Time: 20</p>
+    <div class="level-card">
+      <h2 class="level-title">Level 1 – Collect Stars ⭐</h2>
+      <p class="level-subtitle">Click the falling stars before time runs out!</p>
+      <div class="level-game-area">
+        <div id="playArea" style="position: relative; width: 100%; max-width: 300px; height: 350px; margin: auto; border: none; overflow: hidden; border-radius: 12px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);"></div>
+      </div>
+      <div class="level-stats">
+        <span>Score: <strong id="score">0</strong> / 10</span>
+        <span>Time: <strong id="timer">20</strong>s</span>
+      </div>
+    </div>
   `;
 
   const playArea = document.getElementById("playArea");
@@ -13,17 +20,17 @@ function startLevel1(container, onComplete) {
 
   let score = 0;
   const targetScore = 10;
-  let timeLeft = 20; // seconds
+  let timeLeft = 20;
 
-  // Spawn stars
   function createStar() {
     const star = document.createElement("div");
     star.innerText = "⭐";
     star.style.position = "absolute";
     star.style.fontSize = "30px";
-    star.style.left = Math.random() * 260 + "px";
+    star.style.left = Math.random() * (playArea.offsetWidth - 40) + "px";
     star.style.top = "-40px";
     star.style.cursor = "pointer";
+    star.style.transition = "transform 0.1s";
     playArea.appendChild(star);
 
     const speed = 2 + Math.random() * 2;
@@ -33,7 +40,7 @@ function startLevel1(container, onComplete) {
       top += speed;
       star.style.top = top + "px";
 
-      if (top > 400) {
+      if (top > playArea.offsetHeight) {
         clearInterval(fall);
         star.remove();
       }
@@ -43,7 +50,9 @@ function startLevel1(container, onComplete) {
       clearInterval(fall);
       star.remove();
       score++;
-      scoreDisplay.innerText = "Score: " + score;
+      scoreDisplay.innerText = score;
+      scoreDisplay.classList.add("score-animate");
+      setTimeout(() => scoreDisplay.classList.remove("score-animate"), 300);
 
       if (score >= targetScore) {
         clearInterval(spawnInterval);
@@ -53,20 +62,22 @@ function startLevel1(container, onComplete) {
     };
   }
 
-  // Spawn stars every 800ms
   const spawnInterval = setInterval(createStar, 800);
 
-  // Timer countdown
   const timerInterval = setInterval(() => {
     timeLeft--;
-    timerDisplay.innerText = `Time: ${timeLeft}`;
+    timerDisplay.innerText = timeLeft;
+    
+    if (timeLeft <= 10) {
+      timerDisplay.classList.add("timer-warning");
+    }
 
     if (timeLeft <= 0) {
       clearInterval(spawnInterval);
       clearInterval(timerInterval);
-
+      timerDisplay.classList.remove("timer-warning");
       alert("Time's up! Try again 💖");
-      startLevel1(container, onComplete); // restart level
+      startLevel1(container, onComplete);
     }
   }, 1000);
 }

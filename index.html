@@ -12,34 +12,41 @@
 
   <!-- HOME -->
   <section id="homeScreen" class="screen active">
-    <h1>🎁 A Magical Surprise Awaits</h1>
-    <p>Complete all 44 levels to unlock every memory.</p>
-    <button id="startBtn" class="primaryBtn">Start the Adventure</button>
+    <div class="screen-content">
+      <h1>🎁 A Magical Surprise Awaits</h1>
+      <button id="startBtn" class="primaryBtn">Start the Adventure</button>
+    </div>
   </section>
 
   <!-- MAP -->
   <section id="mapScreen" class="screen">
-    <h2>🌈 Choose a Level</h2>
-    <div id="levelMap"></div>
-    <button id="backHome" class="secondaryBtn">Back Home</button>
+    <div class="screen-content">
+      <h2>🌈 Choose a Level</h2>
+      <div id="levelMap"></div>
+      <button id="backHome" class="secondaryBtn">Back Home</button>
+    </div>
   </section>
 
   <!-- GAME -->
   <section id="gameScreen" class="screen">
-    <div id="topBar">
-      <h3 id="levelTitle"></h3>
-      <button id="backMap" class="secondaryBtn">Back to Map</button>
+    <div class="screen-content">
+      <div id="topBar">
+        <h3 id="levelTitle"></h3>
+        <button id="backMap" class="secondaryBtn">Back to Map</button>
+      </div>
+      <div id="gameContainer"></div>
     </div>
-    <div id="gameContainer"></div>
   </section>
 
   <!-- REWARD -->
   <section id="rewardScreen" class="screen">
-    <h2>🎉 You Unlocked a Memory!</h2>
-    <div id="rewardImageContainer"></div>
-    <a id="downloadBtn" class="primaryBtn" download>Download Memory</a>
-    <br>
-    <button id="continueBtn" class="secondaryBtn">Continue</button>
+    <div class="screen-content">
+      <h2>🎉 You Unlocked a Memory!</h2>
+      <div id="rewardImageContainer"></div>
+      <a id="downloadBtn" class="primaryBtn" download>Download Memory</a>
+      <br>
+      <button id="continueBtn" class="secondaryBtn" style="margin-top: 10px;">Continue</button>
+    </div>
   </section>
 
 </div>
@@ -60,7 +67,6 @@
 <script src="levels/level11.js"></script>
 <script src="levels/level12.js"></script>
 <script src="levels/level13.js"></script>
-<script src="levels/level11.js"></script>
 <script src="levels/level14.js"></script>
 <script src="levels/level15.js"></script>
 <script src="levels/level16.js"></script>

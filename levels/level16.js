@@ -1,49 +1,22 @@
 function startLevel16(container, onComplete){
 
   container.innerHTML = `
-  <style>
-    .game-area{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      font-family:'Segoe UI', sans-serif;
-      padding:20px;
-    }
-
-    canvas{
-      touch-action:none;
-    }
-
-    button{
-      margin-top:20px;
-      padding:10px 25px;
-      border:none;
-      border-radius:25px;
-      background:#ff9ecb;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-
-    h2{
-      color:#6a4c93;
-      margin-bottom:15px;
-    }
-  </style>
-
-  <div class="game-area">
-    <h2>🌸 6×6 Flow Challenge 🌸</h2>
-    <canvas id="game" width="480" height="480"></canvas>
-    <button id="resetBtn">Reset 🔄</button>
-  </div>
+    <div class="level-card">
+      <h2 class="level-title">Level 16 – Flow Connect 🌸</h2>
+      <p class="level-subtitle">Connect matching colors without crossing!</p>
+      <div class="level-game-area">
+        <canvas id="game" width="300" height="300" style="width:100%; max-width:300px; display:block; margin:0 auto; border-radius:12px; touch-action:none;"></canvas>
+        <button class="restart-btn" id="resetBtn" style="display:block; margin:15px auto 0;">Reset 🔄</button>
+      </div>
+    </div>
   `;
 
-  const canvas = document.getElementById("game");
+  const canvas = container.querySelector("#game");
   const ctx = canvas.getContext("2d");
-  const resetBtn = document.getElementById("resetBtn");
+  const resetBtn = container.querySelector("#resetBtn");
 
   const GRID = 6;
-  const CELL = 80;
+  const CELL = 50;
 
   const colors = {
     red: "#ffadad",
@@ -78,19 +51,15 @@ function startLevel16(container, onComplete){
   }
 
   function draw(){
-    ctx.clearRect(0,0,480,480);
-
+    ctx.clearRect(0,0,300,300);
     for(let r=0;r<GRID;r++){
       for(let c=0;c<GRID;c++){
-
         ctx.fillStyle="#ffffff";
         ctx.fillRect(c*CELL, r*CELL, CELL, CELL);
-
         if(grid[r][c]){
           ctx.fillStyle = colors[grid[r][c]];
-          ctx.fillRect(c*CELL+10, r*CELL+10, CELL-20, CELL-20);
+          ctx.fillRect(c*CELL+8, r*CELL+8, CELL-16, CELL-16);
         }
-
         ctx.strokeStyle="#e6d6f5";
         ctx.lineWidth=2;
         ctx.strokeRect(c*CELL, r*CELL, CELL, CELL);
@@ -99,10 +68,7 @@ function startLevel16(container, onComplete){
   }
 
   function getCell(x,y){
-    return [
-      Math.floor(y/CELL),
-      Math.floor(x/CELL)
-    ];
+    return [Math.floor(y/CELL), Math.floor(x/CELL)];
   }
 
   function isAdjacent(r1,c1,r2,c2){
@@ -120,12 +86,8 @@ function startLevel16(container, onComplete){
 
   canvas.addEventListener("mousedown",(e)=>{
     const rect = canvas.getBoundingClientRect();
-    const [r,c] = getCell(
-      e.clientX - rect.left,
-      e.clientY - rect.top
-    );
-
-    if(grid[r][c]){
+    const [r,c] = getCell(e.clientX - rect.left, e.clientY - rect.top);
+    if(r>=0 && r<GRID && c>=0 && c<GRID && grid[r][c]){
       currentColor = grid[r][c];
       clearPath(currentColor);
       currentPath = [[r,c]];
@@ -135,19 +97,12 @@ function startLevel16(container, onComplete){
 
   canvas.addEventListener("mousemove",(e)=>{
     if(!currentColor) return;
-
     const rect = canvas.getBoundingClientRect();
-    const [r,c] = getCell(
-      e.clientX - rect.left,
-      e.clientY - rect.top
-    );
-
+    const [r,c] = getCell(e.clientX - rect.left, e.clientY - rect.top);
     const [lastR,lastC] = currentPath[currentPath.length-1];
-
     if(r<0||r>=GRID||c<0||c>=GRID) return;
     if(!isAdjacent(r,c,lastR,lastC)) return;
     if(grid[r][c] && grid[r][c] !== currentColor) return;
-
     if(!currentPath.some(p=>p[0]===r && p[1]===c)){
       grid[r][c] = currentColor;
       currentPath.push([r,c]);
@@ -158,14 +113,11 @@ function startLevel16(container, onComplete){
 
   canvas.addEventListener("mouseup",()=>{
     if(!currentColor) return;
-
     const end = pairs[currentColor][1];
     const last = currentPath[currentPath.length-1];
-
     if(last[0] !== end[0] || last[1] !== end[1]){
       clearPath(currentColor);
     }
-
     currentColor = null;
     currentPath = [];
     draw();
@@ -181,11 +133,7 @@ function startLevel16(container, onComplete){
     setTimeout(()=>onComplete(),500);
   }
 
-  resetBtn.onclick = ()=>{
-    initGrid();
-    draw();
-  };
-
+  resetBtn.onclick = ()=>{ initGrid(); draw(); };
   initGrid();
   draw();
 }

@@ -1,38 +1,26 @@
 function startLevel17(container, onComplete){
 
-  // Clear previous intervals/animations if any
   if(container._fruitInterval) clearInterval(container._fruitInterval);
   if(container._fruitAnimation) cancelAnimationFrame(container._fruitAnimation);
 
   container.innerHTML = `
-  <style>
-    .ninja-wrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      font-family:'Segoe UI',sans-serif;
-      padding:20px;
-    }
-    canvas{
-      background:linear-gradient(to bottom,#1d1d2e,#2b2b45);
-      border-radius:20px;
-    }
-    h2{
-      color:white; /* level title font white */
-      margin-bottom:10px;
-    }
-  </style>
-
-  <div class="ninja-wrap">
-    <h2>🍉 Level 17 – Slice Frenzy 🍉</h2>
-    <canvas id="game" width="500" height="500"></canvas>
-  </div>
+    <div class="level-card">
+      <h2 class="level-title">Level 17 – Slice Frenzy 🍉</h2>
+      <p class="level-subtitle">Slice the fruits, avoid the bombs!</p>
+      <div class="level-game-area">
+        <canvas id="game" width="300" height="350" style="width:100%; max-width:300px; display:block; margin:0 auto; border-radius:12px; background:linear-gradient(to bottom,#1d1d2e,#2b2b45);"></canvas>
+      </div>
+      <div class="level-stats">
+        <span>Score: <strong id="score">0</strong> / 10</span>
+      </div>
+    </div>
   `;
 
-  const canvas = document.getElementById("game");
+  const canvas = container.querySelector("#game");
   const ctx = canvas.getContext("2d");
+  const scoreEl = container.querySelector("#score");
 
-  let fruits, score, lives, mouse, slicing;
+  let fruits = [], score = 0, lives = 3, mouse = {x:0,y:0}, slicing = false;
   let animationId;
 
   function initGame(){
@@ -41,32 +29,28 @@ function startLevel17(container, onComplete){
     lives = 3;
     mouse = {x:0,y:0};
     slicing = false;
+    scoreEl.textContent = "0";
   }
 
   class Fruit{
     constructor(){
-      this.x = Math.random()*450 + 25;
-      this.y = 520;
-      this.radius = 20 + Math.random()*10;
-      this.speedY = -(8 + Math.random()*3);
-      this.gravity = 0.18;
+      this.x = Math.random() * 260 + 20;
+      this.y = 370;
+      this.radius = 18 + Math.random() * 8;
+      this.speedY = -(7 + Math.random() * 3);
+      this.gravity = 0.16;
       this.type = Math.random() < 0.2 ? "bomb" : "fruit";
-      this.color = this.type === "bomb"
-        ? "#ff4444" // bright red bomb
-        : ["#ffadad","#caffbf","#a0c4ff","#d0bfff","#fff3b0"][Math.floor(Math.random()*5)];
+      this.color = this.type === "bomb" ? "#ff4444" : ["#ffadad","#caffbf","#a0c4ff","#d0bfff","#fff3b0"][Math.floor(Math.random()*5)];
     }
-
     update(){
       this.speedY += this.gravity;
       this.y += this.speedY;
     }
-
     draw(){
       ctx.beginPath();
-      ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
       ctx.fillStyle = this.color;
       ctx.fill();
-
       if(this.type==="bomb"){
         ctx.strokeStyle="white";
         ctx.lineWidth=2;
@@ -79,13 +63,6 @@ function startLevel17(container, onComplete){
     fruits.push(new Fruit());
   }
 
-  function drawScore(){
-    ctx.fillStyle="white";
-    ctx.font="18px Segoe UI";
-    ctx.fillText("Score: "+score,20,30);
-    ctx.fillText("Lives: "+lives,400,30);
-  }
-
   function distance(x1,y1,x2,y2){
     return Math.hypot(x1-x2,y1-y2);
   }
@@ -94,69 +71,50 @@ function startLevel17(container, onComplete){
     cancelAnimationFrame(animationId);
     clearInterval(container._fruitInterval);
     alert(message);
-    if(confirm("Do you want to play again?")){
-      startLevel17(container, onComplete);
-    } else {
-      if(onComplete) onComplete();
-    }
+    startLevel17(container, onComplete);
   }
 
   function update(){
-    ctx.clearRect(0,0,500,500);
-
+    ctx.clearRect(0,0,300,350);
     fruits.forEach((fruit,index)=>{
       fruit.update();
       fruit.draw();
-
       if(slicing && distance(mouse.x,mouse.y,fruit.x,fruit.y)<fruit.radius){
         if(fruit.type==="bomb"){
-          gameOver("💥 You hit a bomb! Game Over!");
+          gameOver("💥 You hit a bomb!");
         } else {
           score++;
+          scoreEl.textContent = score;
+          scoreEl.classList.add("score-animate");
+          setTimeout(() => scoreEl.classList.remove("score-animate"), 300);
         }
         fruits.splice(index,1);
       }
-
-      if(fruit.y > 550){
+      if(fruit.y > 380){
         if(fruit.type==="fruit"){
           lives--;
-          if(lives <= 0){
-            gameOver("💀 You lost all your lives! Game Over!");
-          }
+          if(lives <= 0) gameOver("💀 You lost all lives!");
         }
         fruits.splice(index,1);
       }
     });
-
-    drawScore();
-
     if(score >= 10){
       setTimeout(()=>onComplete(),800);
       return;
     }
-
     animationId = requestAnimationFrame(update);
     container._fruitAnimation = animationId;
   }
 
   canvas.addEventListener("mousedown",()=> slicing=true);
   canvas.addEventListener("mouseup",()=> slicing=false);
-
   canvas.addEventListener("mousemove",(e)=>{
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
-
-    if(slicing){
-      ctx.beginPath();
-      ctx.arc(mouse.x,mouse.y,5,0,Math.PI*2);
-      ctx.fillStyle="#ffffff";
-      ctx.fill();
-    }
   });
 
   container._fruitInterval = setInterval(spawnFruit, 1300);
-
   initGame();
   update();
 }

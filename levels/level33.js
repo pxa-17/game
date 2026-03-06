@@ -1,11 +1,15 @@
 function startLevel33(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 33 – Color Pattern</h2>
+    <p class="level-subtitle">Sort balls by color into tubes</p>
+    <div class="level-game-area">
+    <style>
     .ball-sort-card{
       width: 750px;
       margin: 30px auto;
       padding: 20px;
-      background: #2c2c2c; /* dark container */
+      background: #2c2c2c;
       border-radius: 15px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       text-align: center;
@@ -66,14 +70,16 @@ function startLevel33(container, onComplete){
     .restart-btn:hover{
       background:#ff7aa5;
     }
-  </style>
+    </style>
 
-  <div class="ball-sort-card">
-    <h3>Level 33 – Ball Sorting Tubes</h3>
-    <div class="instructions">Click on a tube to select the top ball, then click another tube to move it.</div>
-    <div class="tubes" id="tubes"></div>
-    <div class="moves" id="moves">Moves: 0</div>
-    <button class="restart-btn" id="restartBtn">Restart Level</button>
+    <div class="ball-sort-card">
+      <h3>Level 33 – Ball Sorting Tubes</h3>
+      <div class="instructions">Click on a tube to select the top ball, then click another tube to move it.</div>
+      <div class="tubes" id="tubes"></div>
+      <div class="moves" id="moves">Moves: 0</div>
+      <button class="restart-btn" id="restartBtn">Restart Level</button>
+    </div>
+    </div>
   </div>
   `;
 

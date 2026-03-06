@@ -1,31 +1,19 @@
 function startLevel11(container, onComplete){
   container.innerHTML = `
-    <h3>Level 11: Tic Tac Toe ❌⭕ (Hard Mode)</h3>
-    <p>You are X. Beat the smart computer!</p>
-    <div id="tttBoard" style="
-      display:grid;
-      grid-template-columns:repeat(3,100px);
-      grid-gap:5px;
-      justify-content:center;
-      margin:20px auto;">
+    <div class="level-card">
+      <h2 class="level-title">Level 11 – Tic Tac Toe ❌⭕</h2>
+      <p class="level-subtitle">You are X. Beat the smart computer!</p>
+      <div class="level-game-area">
+        <div id="tttBoard" style="display:grid; grid-template-columns:repeat(3,90px); grid-gap:8px; justify-content:center; margin:10px auto;"></div>
+        <p id="tttStatus" style="text-align:center; font-weight:bold; margin:10px 0; color:#6b5b7a;"></p>
+        <button class="restart-btn" id="tttReset" style="display:block; margin:10px auto;">Restart</button>
+      </div>
     </div>
-    <p id="tttStatus" style="text-align:center; font-weight:bold;"></p>
-    <button id="tttReset" style="
-      display:block;
-      margin:10px auto;
-      padding:8px 16px;
-      background:#ff4da6;
-      color:#fff;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;">
-      Restart
-    </button>
   `;
 
-  const boardEl = document.getElementById("tttBoard");
-  const statusEl = document.getElementById("tttStatus");
-  const resetBtn = document.getElementById("tttReset");
+  const boardEl = container.querySelector("#tttBoard");
+  const statusEl = container.querySelector("#tttStatus");
+  const resetBtn = container.querySelector("#tttReset");
 
   let board = ["","","","","","","","",""];
   let gameActive = true;
@@ -50,7 +38,6 @@ function startLevel11(container, onComplete){
     for(let pattern of winPatterns){
       const [a,b,c] = pattern;
       const values = [board[a], board[b], board[c]];
-
       if(values.filter(v=>v===player).length===2 && values.includes("")){
         if(board[a]==="") return a;
         if(board[b]==="") return b;
@@ -62,34 +49,21 @@ function startLevel11(container, onComplete){
 
   function computerMove(){
     if(!gameActive) return;
-
     let move = null;
-
-    // 1️⃣ Try to win
     move = findBestMove("O");
-
-    // 2️⃣ Block player
     if(move===null){
       move = findBestMove("X");
     }
-
-    // 3️⃣ Take center
     if(move===null && board[4]===""){
       move = 4;
     }
-
-    // 4️⃣ Take corner
     const corners = [0,2,6,8];
     const emptyCorners = corners.filter(i=>board[i]==="");
     if(move===null && emptyCorners.length>0){
       move = emptyCorners[Math.floor(Math.random()*emptyCorners.length)];
     }
-
-    // 5️⃣ Random fallback
     if(move===null){
-      const emptyIndexes = board
-        .map((val,i)=> val==="" ? i : null)
-        .filter(v=>v!==null);
+      const emptyIndexes = board.map((val,i)=> val==="" ? i : null).filter(v=>v!==null);
       move = emptyIndexes[Math.floor(Math.random()*emptyIndexes.length)];
     }
 
@@ -99,12 +73,14 @@ function startLevel11(container, onComplete){
     const result = checkWinner();
     if(result==="O"){
       statusEl.innerText = "Computer Wins! 😈";
+      statusEl.style.color = "#f44336";
       gameActive = false;
     } else if(result==="draw"){
       statusEl.innerText = "It's a Draw!";
       gameActive = false;
     } else {
       statusEl.innerText = "Your Turn (X)";
+      statusEl.style.color = "#4caf50";
     }
   }
 
@@ -113,29 +89,32 @@ function startLevel11(container, onComplete){
     board = ["","","","","","","","",""];
     gameActive = true;
     statusEl.innerText = "Your Turn (X)";
+    statusEl.style.color = "#4caf50";
 
     for(let i=0;i<9;i++){
       const cell = document.createElement("div");
-      cell.style.width = "100px";
-      cell.style.height = "100px";
-      cell.style.background = "#fff";
+      cell.style.width = "90px";
+      cell.style.height = "90px";
+      cell.style.background = "linear-gradient(135deg, #fff5f8, #ffe6f0)";
       cell.style.border = "2px solid #ff4da6";
+      cell.style.borderRadius = "12px";
       cell.style.display = "flex";
       cell.style.alignItems = "center";
       cell.style.justifyContent = "center";
-      cell.style.fontSize = "2rem";
+      cell.style.fontSize = "2.5rem";
       cell.style.cursor = "pointer";
+      cell.style.transition = "all 0.2s ease";
 
       cell.addEventListener("click", ()=>{
         if(!gameActive || board[i] !== "") return;
-
         board[i] = "X";
         cell.innerText = "X";
+        cell.style.color = "#ff4da6";
 
         const result = checkWinner();
-
         if(result==="X"){
           statusEl.innerText = "You Win! 🎉";
+          statusEl.style.color = "#4caf50";
           gameActive = false;
           setTimeout(()=> onComplete(), 800);
         } else if(result==="draw"){
@@ -143,6 +122,7 @@ function startLevel11(container, onComplete){
           gameActive = false;
         } else {
           statusEl.innerText = "Computer's Turn...";
+          statusEl.style.color = "#6b5b7a";
           setTimeout(computerMove, 400);
         }
       });

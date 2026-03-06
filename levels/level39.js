@@ -1,12 +1,16 @@
 function startLevel39(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 39 – Memory Tiles</h2>
+    <p class="level-subtitle">Quickly tap the highlighted tiles</p>
+    <div class="level-game-area">
+    <style>
     .quicktap-game{
       width: 400px;
       margin: 30px auto;
       text-align:center;
       font-family:'Segoe UI',sans-serif;
-      background:#222; /* dark background */
+      background:#222;
       padding:15px;
       border-radius:15px;
       box-shadow:0 5px 15px rgba(0,0,0,0.5);
@@ -23,12 +27,12 @@ function startLevel39(container, onComplete){
       width:100px;
       height:100px;
       border-radius:15px;
-      background:#444; /* dark button background */
+      background:#444;
       cursor:pointer;
       transition:0.2s;
     }
     .active{
-      background: #ffb3cc !important; /* pastel pink highlight */
+      background: #ffb3cc !important;
       box-shadow: 0 0 10px #ffb3cc;
     }
     .message{
@@ -36,13 +40,15 @@ function startLevel39(container, onComplete){
       font-weight:bold;
       min-height:20px;
     }
-  </style>
+    </style>
 
-  <div class="quicktap-game">
-    <h3>Level 39 – Quick Tap Challenge</h3>
-    <div class="grid" id="grid"></div>
-    <div class="message" id="message"></div>
-    <div>Score: <span id="score">0</span>/15</div>
+    <div class="quicktap-game">
+      <h3>Level 39 – Quick Tap Challenge</h3>
+      <div class="grid" id="grid"></div>
+      <div class="message" id="message"></div>
+      <div>Score: <span id="score">0</span>/15</div>
+    </div>
+    </div>
   </div>
   `;
 

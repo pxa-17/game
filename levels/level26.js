@@ -6,6 +6,10 @@ function startLevel26(container, onComplete){
   const IMAGE_PATH = "images/img26.png";
 
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 26 – Puzzle Challenge</h2>
+    <p class="level-subtitle">Rotate tiles to reveal the image</p>
+    <div class="level-game-area">
   <style>
     .card{
       display:inline-block;
@@ -56,6 +60,8 @@ function startLevel26(container, onComplete){
     <p>Click tiles to rotate them and restore the image!</p>
     <div class="grid" id="grid"></div>
     <img src="${IMAGE_PATH}" class="full-image" id="fullImage" />
+  </div>
+    </div>
   </div>
   `;
 

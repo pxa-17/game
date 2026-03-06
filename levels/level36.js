@@ -1,6 +1,10 @@
 function startLevel36(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 36 – Jigsaw Puzzle</h2>
+    <p class="level-subtitle">Match word pairs to complete the puzzle</p>
+    <div class="level-game-area">
+    <style>
     .matching-game{
       width: 600px;
       margin: 30px auto;
@@ -42,13 +46,15 @@ function startLevel36(container, onComplete){
       margin-top: 10px;
       color: #ff4d88;
     }
-  </style>
+    </style>
 
-  <div class="matching-game">
-    <h3>Level 36 – Word Matching Game</h3>
-    <div class="matches-remaining" id="matchesRemaining"></div>
-    <div class="cards" id="cardsContainer"></div>
-    <div class="message" id="message"></div>
+    <div class="matching-game">
+      <h3>Level 36 – Word Matching Game</h3>
+      <div class="matches-remaining" id="matchesRemaining"></div>
+      <div class="cards" id="cardsContainer"></div>
+      <div class="message" id="message"></div>
+    </div>
+    </div>
   </div>
   `;
 

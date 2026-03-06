@@ -1,6 +1,10 @@
 function startLevel22(container, onComplete){
 
 container.innerHTML = `
+<div class="level-card">
+  <h2 class="level-title">Level 22 – Maze Escape</h2>
+  <p class="level-subtitle">Find your way out</p>
+  <div class="level-game-area">
 <style>
 .maze-wrapper{
   text-align:center;
@@ -43,6 +47,8 @@ container.innerHTML = `
   <p>This one is guaranteed solvable 😌</p>
   <div class="maze-grid" id="maze"></div>
   <div class="message" id="message"></div>
+</div>
+  </div>
 </div>
 `;
 

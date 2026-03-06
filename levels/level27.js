@@ -1,6 +1,10 @@
 function startLevel28(container, onComplete){
 
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 27 – Balance Game</h2>
+    <p class="level-subtitle">Keep the ball balanced</p>
+    <div class="level-game-area">
   <style>
     .balance-card{
       width: 400px;
@@ -68,6 +72,8 @@ function startLevel28(container, onComplete){
     <div class="controls">
       <button class="btn" id="leftBtn">◀️ Left</button>
       <button class="btn" id="rightBtn">▶️ Right</button>
+    </div>
+  </div>
     </div>
   </div>
   `;

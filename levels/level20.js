@@ -1,6 +1,10 @@
 function startLevel20(container, onComplete){
 
   container.innerHTML = `
+  <div class="level-card">
+    <h2 class="level-title">Level 20 – Quiz Challenge</h2>
+    <p class="level-subtitle">No mistakes allowed!</p>
+    <div class="level-game-area">
   <style>
     .quiz-container{
       font-family:'Segoe UI',sans-serif;
@@ -73,6 +77,8 @@ function startLevel20(container, onComplete){
     <div class="options" id="options"></div>
     <div class="progress" id="progress"></div>
     <div class="result" id="result"></div>
+  </div>
+    </div>
   </div>
   `;
 

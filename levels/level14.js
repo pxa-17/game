@@ -1,74 +1,29 @@
 function startLevel14(container, onComplete){
 
   container.innerHTML = `
-  <style>
-    .wrapper{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      font-family:sans-serif;
-      text-align:center;
-      padding:20px;
-    }
-
-    .word{
-      font-size:32px;
-      letter-spacing:10px;
-      margin:20px 0;
-    }
-
-    .letters{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      max-width:420px;
-      justify-content:center;
-    }
-
-    .letter{
-      padding:8px 12px;
-      background:#1f2442;
-      color:white;
-      border-radius:6px;
-      cursor:pointer;
-      font-size:14px;
-      transition:0.2s;
-    }
-
-    .letter:hover{
-      background:#2e3570;
-    }
-
-    .letter.disabled{
-      background:#444;
-      pointer-events:none;
-    }
-
-    .lives{
-      font-size:28px;
-      margin:20px 0;
-      min-height:40px;
-    }
-  </style>
-
-  <div class="wrapper">
-    <h2>Guess the word</h2>
-    <div class="lives" id="lives"></div>
-    <div class="word" id="word"></div>
-    <div class="letters" id="letters"></div>
-  </div>
+    <div class="level-card">
+      <h2 class="level-title">Level 14 – Word Guess 🔤</h2>
+      <p class="level-subtitle">Guess the hidden word!</p>
+      <div class="level-game-area">
+        <div style="display:flex; flex-direction:column; align-items:center; padding:20px; min-height:300px;">
+          <div id="lives" style="font-size:22px; margin-bottom:15px;"></div>
+          <div id="word" style="font-size:36px; letter-spacing:12px; margin:20px 0; font-weight:bold; color:#ff4da6;"></div>
+          <div id="letters" style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:320px;"></div>
+        </div>
+      </div>
+    </div>
   `;
 
   const words = ["FOREVER","DESTINY","JOURNEY","PROMISE","LOYALTY"];
   const secret = words[Math.floor(Math.random()*words.length)];
 
-  const wordEl = document.getElementById("word");
-  const lettersDiv = document.getElementById("letters");
-  const livesEl = document.getElementById("lives");
+  const wordEl = container.querySelector("#word");
+  const lettersDiv = container.querySelector("#letters");
+  const livesEl = container.querySelector("#lives");
 
   let guessed = [];
   let wrong = 0;
-  const maxWrong = 6; // ❤️ 6 Hearts
+  const maxWrong = 6;
 
   function renderWord(){
     wordEl.textContent = secret
@@ -79,11 +34,7 @@ function startLevel14(container, onComplete){
 
   function updateLives(){
     const livesLeft = maxWrong - wrong;
-
-    livesEl.innerHTML =
-      "Lives: " +
-      "❤️".repeat(livesLeft) +
-      "🖤".repeat(wrong);
+    livesEl.innerHTML = "❤️".repeat(livesLeft) + "🖤".repeat(wrong);
   }
 
   function checkWin(){
@@ -102,11 +53,14 @@ function startLevel14(container, onComplete){
 
   alphabet.forEach(letter=>{
     const div = document.createElement("div");
-    div.className = "letter";
+    div.style.cssText = "padding:10px 14px; background:linear-gradient(135deg, #ff4da6, #ff85c1); color:white; border-radius:8px; cursor:pointer; font-weight:bold; transition:all 0.2s ease;";
     div.textContent = letter;
+    div.onmouseover = () => div.style.transform = "scale(1.1)";
+    div.onmouseout = () => div.style.transform = "scale(1)";
 
     div.onclick = ()=>{
-      div.classList.add("disabled");
+      div.style.background = "#ccc";
+      div.style.cursor = "not-allowed";
 
       if(secret.includes(letter)){
         guessed.push(letter);

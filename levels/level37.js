@@ -1,6 +1,10 @@
 function startLevel37(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 37 – Potion Brew</h2>
+    <p class="level-subtitle">Mix ingredients in the correct order</p>
+    <div class="level-game-area">
+    <style>
     .potion-lab{
       width: 600px;
       margin: 30px auto;
@@ -40,13 +44,15 @@ function startLevel37(container, onComplete){
       min-height: 20px;
       font-weight:bold;
     }
-  </style>
+    </style>
 
-  <div class="potion-lab">
-    <h3>Level 37 – Potion Mixing Lab</h3>
-    <div class="ingredients" id="ingredientsContainer"></div>
-    <div class="current-sequence" id="currentSequence"></div>
-    <div class="message" id="message"></div>
+    <div class="potion-lab">
+      <h3>Level 37 – Potion Mixing Lab</h3>
+      <div class="ingredients" id="ingredientsContainer"></div>
+      <div class="current-sequence" id="currentSequence"></div>
+      <div class="message" id="message"></div>
+    </div>
+    </div>
   </div>
   `;
 

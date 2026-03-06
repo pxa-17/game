@@ -1,62 +1,73 @@
 function startLevel31(container, onComplete){
   container.innerHTML = `
-  <style>
-    .timeline-card{
-      width: 700px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #fdf0f5;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      font-family:'Segoe UI',sans-serif;
-      text-align:center;
-    }
-    .instructions{
-      font-size:18px;
-      color:#ff4d88;
-      margin-bottom:15px;
-      font-weight:bold;
-    }
-    .events{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-bottom:20px;
-    }
-    .event{
-      padding:10px;
-      background:#ffb3cc;
-      border-radius:8px;
-      cursor:grab;
-      font-weight:bold;
-      user-select:none;
-    }
-    .check-btn{
-      padding:10px 20px;
-      border:none;
-      border-radius:8px;
-      background:#ff4d88;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    .check-btn:hover{
-      background:#ff1a66;
-    }
-    .message{
-      margin-top:15px;
-      font-weight:bold;
-      min-height:20px;
-    }
-  </style>
+    <div class="level-card">
+      <h2 class="level-title">Level 31 – Cafe Timeline</h2>
+      <p class="level-subtitle">Arrange cafes in chronological order</p>
+      <div class="level-game-area">
+      <style>
+      .timeline-card{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fdf0f5;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        font-family:'Segoe UI',sans-serif;
+        text-align:center;
+      }
+      .instructions{
+        font-size:16px;
+        color:#ff4d88;
+        margin-bottom:15px;
+        font-weight:bold;
+      }
+      .events{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin-bottom:20px;
+      }
+      .event{
+        padding:12px;
+        background:linear-gradient(135deg, #ff4da6, #ff85c1);
+        color:white;
+        border-radius:10px;
+        cursor:grab;
+        font-weight:bold;
+        user-select:none;
+        transition: transform 0.2s;
+      }
+      .event:hover{
+        transform: scale(1.02);
+      }
+      .check-btn{
+        padding:12px 25px;
+        border:none;
+        border-radius:25px;
+        background:linear-gradient(135deg, #ff4da6, #ff85c1);
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+      }
+      .check-btn:hover{
+        background:linear-gradient(135deg, #e60078, #ff4da6);
+      }
+      .message{
+        margin-top:15px;
+        font-weight:bold;
+        min-height:20px;
+      }
+      </style>
 
-  <div class="timeline-card">
-    <h3>🕒 Level 31 – Arrange Cafe Timeline 🕒</h3>
-    <div class="instructions">Drag and drop the cafes to arrange them in the order we visited!</div>
-    <div class="events" id="events"></div>
-    <button class="check-btn" id="checkOrder">Check Order</button>
-    <div class="message" id="message"></div>
-  </div>
+      <div class="timeline-card">
+        <div class="instructions">Drag and drop the cafes to arrange them in the order we visited!</div>
+        <div class="events" id="events"></div>
+        <button class="check-btn" id="checkOrder">Check Order</button>
+        <div class="message" id="message"></div>
+      </div>
+      </div>
+    </div>
   `;
 
   const eventsContainer = container.querySelector("#events");

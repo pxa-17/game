@@ -1,6 +1,10 @@
 function startLevel24(container, onComplete){
 
 container.innerHTML = `
+<div class="level-card">
+  <h2 class="level-title">Level 24 – Reaction Tap</h2>
+  <p class="level-subtitle">Test your reflexes</p>
+  <div class="level-game-area">
 <style>
 .reaction-wrapper{
   text-align:center;
@@ -52,6 +56,8 @@ container.innerHTML = `
   </div>
   <div class="info" id="roundInfo">Round 1 / 5</div>
   <div class="result" id="result"></div>
+</div>
+  </div>
 </div>
 `;
 

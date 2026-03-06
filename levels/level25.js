@@ -3,6 +3,10 @@ function startLevel25(container, onComplete){
 function initGame(){
 
 container.innerHTML = `
+<div class="level-card">
+  <h2 class="level-title">Level 25 – Hidden Objects</h2>
+  <p class="level-subtitle">Find all the hidden objects</p>
+  <div class="level-game-area">
 <style>
 .game-wrapper{
   display:flex;
@@ -142,6 +146,8 @@ container.innerHTML = `
 
     <div class="result" id="result"></div>
 
+  </div>
+</div>
   </div>
 </div>
 `;

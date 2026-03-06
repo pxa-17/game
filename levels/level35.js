@@ -1,6 +1,10 @@
 function startLevel35(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 35 – Simon Says</h2>
+    <p class="level-subtitle">Follow the pattern to complete the challenge</p>
+    <div class="level-game-area">
+    <style>
     .platformer-game{
       width: 800px;
       margin: 30px auto;
@@ -19,11 +23,13 @@ function startLevel35(container, onComplete){
       border: 2px solid #ff6f91;
       border-radius: 10px;
     }
-  </style>
+    </style>
 
-  <div class="platformer-game">
-    <h3>Level 35 – Ultimate Nightmare Platformer</h3>
-    <canvas id="platformerCanvas" width="800" height="400"></canvas>
+    <div class="platformer-game">
+      <h3>Level 35 – Ultimate Nightmare Platformer</h3>
+      <canvas id="platformerCanvas" width="800" height="400"></canvas>
+    </div>
+    </div>
   </div>
   `;
 

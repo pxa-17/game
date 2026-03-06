@@ -1,38 +1,24 @@
 function startLevel18(container, onComplete){
   container.innerHTML = `
-  <style>
-    .candy-wrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      font-family:'Segoe UI',sans-serif;
-      padding:20px;
-    }
-    canvas{
-      background:#fbeff9;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    }
-    h2{
-      color:#ff6b81;
-      margin-bottom:10px;
-    }
-  </style>
-
-  <div class="candy-wrap">
-    <h2>🍭 Level 18 – Candy Match 🍭</h2>
-    <canvas id="candyGame" width="400" height="400"></canvas>
-    <div style="color:#333;font-size:16px;margin-top:10px;">Score: <span id="score">0</span></div>
-  </div>
+    <div class="level-card">
+      <h2 class="level-title">Level 18 – Candy Match 🍭</h2>
+      <p class="level-subtitle">Match 3 or more candies!</p>
+      <div class="level-game-area">
+        <canvas id="candyGame" width="280" height="280" style="width:100%; max-width:280px; display:block; margin:0 auto; border-radius:12px; background:#fbeff9;"></canvas>
+      </div>
+      <div class="level-stats">
+        <span>Score: <strong id="score">0</strong> / 180</span>
+      </div>
+    </div>
   `;
 
-  const canvas = document.getElementById("candyGame");
+  const canvas = container.querySelector("#candyGame");
   const ctx = canvas.getContext("2d");
   const scoreEl = container.querySelector("#score");
 
-  const ROWS = 8;
-  const COLS = 8;
-  const SIZE = 50;
+  const ROWS = 7;
+  const COLS = 7;
+  const SIZE = 40;
   const candies = ["🍎","🍒","🍊","🍇","🍉","🍬"];
   let grid = [];
   let selected = null;
@@ -52,23 +38,19 @@ function startLevel18(container, onComplete){
   }
 
   function drawGrid(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0,0,280,280);
     ctx.textAlign="center";
     ctx.textBaseline="middle";
-    ctx.font="30px Segoe UI Emoji";
-
+    ctx.font="24px Segoe UI Emoji";
     for(let r=0;r<ROWS;r++){
       for(let c=0;c<COLS;c++){
         if(grid[r][c]!==null){
           ctx.fillText(grid[r][c].emoji, c*SIZE + SIZE/2, r*SIZE + SIZE/2);
-          ctx.strokeStyle="#ffffff33";
-          ctx.strokeRect(c*SIZE, r*SIZE, SIZE, SIZE);
         }
       }
     }
-
     if(selected){
-      ctx.strokeStyle="white";
+      ctx.strokeStyle="#ff4da6";
       ctx.lineWidth=3;
       ctx.strokeRect(selected.col*SIZE, selected.row*SIZE, SIZE, SIZE);
     }
@@ -82,7 +64,6 @@ function startLevel18(container, onComplete){
 
   function findMatches(){
     let matches = [];
-    // horizontal
     for(let r=0;r<ROWS;r++){
       let count=1;
       for(let c=1;c<COLS;c++){
@@ -99,8 +80,6 @@ function startLevel18(container, onComplete){
         for(let k=0;k<count;k++) matches.push({row:r,col:COLS-1-k});
       }
     }
-
-    // vertical
     for(let c=0;c<COLS;c++){
       let count=1;
       for(let r=1;r<ROWS;r++){
@@ -121,31 +100,22 @@ function startLevel18(container, onComplete){
   }
 
   function removeMatchesStep(){
-    if(gameStopped) return false;
     const matches = findMatches();
     if(matches.length===0) return false;
-
     matches.forEach(m=>{
       grid[m.row][m.col]=null;
       score++;
     });
-
     scoreEl.textContent = score;
-
     if(score >= 180){
       gameStopped = true;
-      setTimeout(()=>{
-        alert("🎉 Score reached 180! Level Complete! 🎉");
-        if(onComplete) onComplete();
-      },100);
+      setTimeout(()=>onComplete(),100);
       return false;
     }
-
     return true;
   }
 
   function collapseGridStep(){
-    if(gameStopped) return false;
     let moved=false;
     for(let c=0;c<COLS;c++){
       for(let r=ROWS-1;r>=0;r--){
@@ -160,7 +130,6 @@ function startLevel18(container, onComplete){
           }
         }
       }
-
       for(let r=0;r<ROWS;r++){
         if(grid[r][c]===null){
           grid[r][c]={emoji:candies[Math.floor(Math.random()*candies.length)]};
@@ -172,7 +141,6 @@ function startLevel18(container, onComplete){
   }
 
   function animateMatches(){
-    if(gameStopped) return;
     if(removeMatchesStep() || collapseGridStep()){
       drawGrid();
       requestAnimationFrame(animateMatches);
@@ -186,7 +154,6 @@ function startLevel18(container, onComplete){
     const rect = canvas.getBoundingClientRect();
     const col = Math.floor((e.clientX - rect.left)/SIZE);
     const row = Math.floor((e.clientY - rect.top)/SIZE);
-
     if(!selected){
       selected={row,col};
     } else {
@@ -204,12 +171,6 @@ function startLevel18(container, onComplete){
     drawGrid();
   });
 
-  function gameLoop(){
-    if(!gameStopped) requestAnimationFrame(gameLoop);
-    drawGrid();
-  }
-
   initGrid();
   drawGrid();
-  gameLoop();
 }

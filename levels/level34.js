@@ -1,6 +1,10 @@
 function startLevel34(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 34 – Light Refraction</h2>
+    <p class="level-subtitle">Use filters to change the light beam color</p>
+    <div class="level-game-area">
+    <style>
     .light-puzzle{
       width: 700px;
       margin: 30px auto;
@@ -40,13 +44,15 @@ function startLevel34(container, onComplete){
       color:#fff;
       font-size:14px;
     }
-  </style>
+    </style>
 
-  <div class="light-puzzle">
-    <h3>Level 34 – Light Beam Color Puzzle</h3>
-    <div class="instructions">Click filters to place them in the beam path to match the target color!</div>
-    <canvas id="beamCanvas" width="700" height="200"></canvas>
-    <div class="filters" id="filters"></div>
+    <div class="light-puzzle">
+      <h3>Level 34 – Light Beam Color Puzzle</h3>
+      <div class="instructions">Click filters to place them in the beam path to match the target color!</div>
+      <canvas id="beamCanvas" width="700" height="200"></canvas>
+      <div class="filters" id="filters"></div>
+    </div>
+    </div>
   </div>
   `;
 

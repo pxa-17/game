@@ -1,16 +1,23 @@
 function startLevel4(container, onComplete) {
 
     container.innerHTML = `
-      <h3>Complete the Puzzle 🧩</h3>
-      <div id="puzzleArea" style="position: relative; width: 300px; height: 300px; margin: auto; border: 2px solid #ff4da6; overflow: hidden; border-radius: 15px;"></div>
+      <div class="level-card">
+        <h2 class="level-title">Level 4 – Complete the Puzzle 🧩</h2>
+        <p class="level-subtitle">Drag and arrange the pieces to complete the image!</p>
+        <div class="level-game-area">
+          <div id="puzzleArea" style="position: relative; width: 300px; height: 300px; margin: auto; border: 2px solid #ff4da6; overflow: hidden; border-radius: 15px; background: #f0f0f0;"></div>
+        </div>
+        <div class="level-stats">
+          <span>Drag pieces to correct position</span>
+        </div>
+      </div>
     `;
   
     const puzzleArea = document.getElementById("puzzleArea");
-    const gridSize = 3; // 3x3 puzzle
-    const pieceSize = 100; // 300/3
+    const gridSize = 3;
+    const pieceSize = 100;
     const imageSrc = "images/img4.png";
   
-    // Generate pieces
     const positions = [];
     for (let r = 0; r < gridSize; r++) {
       for (let c = 0; c < gridSize; c++) {
@@ -37,7 +44,6 @@ function startLevel4(container, onComplete) {
   
       puzzleArea.appendChild(piece);
   
-      // Add drag & drop logic (similar to previous code)
       let offsetX, offsetY;
       piece.addEventListener("mousedown", (e) => {
         offsetX = e.offsetX;
@@ -51,7 +57,6 @@ function startLevel4(container, onComplete) {
         }
   
         function onMouseUp() {
-          // Snap to correct position if close
           const x = parseFloat(piece.style.left);
           const y = parseFloat(piece.style.top);
           const correctX = parseFloat(piece.getAttribute("data-correct-x"));

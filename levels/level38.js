@@ -1,6 +1,10 @@
 function startLevel38(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 38 – Tile Match</h2>
+    <p class="level-subtitle">Match items to their shadows</p>
+    <div class="level-game-area">
+    <style>
     .shadow-game{
       width: 600px;
       margin: 30px auto;
@@ -54,13 +58,15 @@ function startLevel38(container, onComplete){
       font-weight:bold;
       min-height:20px;
     }
-  </style>
+    </style>
 
-  <div class="shadow-game">
-    <h3>Level 38 – Shadow Puzzle</h3>
-    <div class="shadows-container" id="shadowsContainer"></div>
-    <div class="items-container" id="itemsContainer"></div>
-    <div class="message" id="message"></div>
+    <div class="shadow-game">
+      <h3>Level 38 – Shadow Puzzle</h3>
+      <div class="shadows-container" id="shadowsContainer"></div>
+      <div class="items-container" id="itemsContainer"></div>
+      <div class="message" id="message"></div>
+    </div>
+    </div>
   </div>
   `;
 

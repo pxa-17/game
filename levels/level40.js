@@ -1,6 +1,10 @@
 function startLevel40(container, onComplete){
   container.innerHTML = `
-  <style>
+  <div class="level-card">
+    <h2 class="level-title">Level 40 – Word Scramble</h2>
+    <p class="level-subtitle">Navigate the maze to find the goal</p>
+    <div class="level-game-area">
+    <style>
     .maze-game{
       width: 480px;
       margin: 30px auto;
@@ -54,13 +58,15 @@ function startLevel40(container, onComplete){
       font-weight:bold;
       min-height:20px;
     }
-  </style>
+    </style>
 
-  <div class="maze-game">
-    <h3>Level 40 – Ultimate Color Maze Escape</h3>
-    <div class="maze-grid" id="mazeGrid"></div>
-    <div class="message" id="message"></div>
-    <div>Time left: <span id="timer">60</span> seconds</div>
+    <div class="maze-game">
+      <h3>Level 40 – Ultimate Color Maze Escape</h3>
+      <div class="maze-grid" id="mazeGrid"></div>
+      <div class="message" id="message"></div>
+      <div>Time left: <span id="timer">60</span> seconds</div>
+    </div>
+    </div>
   </div>
   `;
 
