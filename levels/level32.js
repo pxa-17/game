@@ -90,7 +90,7 @@ function startLevel32(container, onComplete){
     <button class="submit-btn" id="submitBtn">Submit</button>
     
     <div class="image-container">
-      <img id="rewardImage" class="reward-image" src="images/img8.png" alt="Reward">
+      <img id="rewardImage" class="reward-image" src="images/img32.png" alt="Reward">
       <div class="slide-door" id="slideDoor"></div>
     </div>
   </div>

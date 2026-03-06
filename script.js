@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
       generateLevels();
     };
     
-    // GENERATE 44 LEVEL BUTTONS
+    // GENERATE 46 LEVEL BUTTONS
     function generateLevels() {
       levelsContainer.innerHTML = "";
     
-      for (let i = 1; i <= 44; i++) {
+      for (let i = 1; i <= 46; i++) {
         const btn = document.createElement("button");
         btn.innerText = i;
         btn.classList.add("level-btn");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // COMPLETE LEVEL
     function completeLevel() {
-      if (currentLevel === unlockedLevel && unlockedLevel < 44) {
+      if (currentLevel === unlockedLevel && unlockedLevel < 46) {
         unlockedLevel++;
       }
     

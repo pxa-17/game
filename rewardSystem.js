@@ -13,6 +13,7 @@ function showReward(levelNumber) {
   const img = document.createElement("img");
   img.src = `images/img${levelNumber}.png`;
   img.classList.add("rewardImage");
+  img.style.display = "none"; // Hide image, only allow download
 
   wrapper.appendChild(img);
   rewardImageContainer.appendChild(wrapper);

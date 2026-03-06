@@ -3,7 +3,7 @@ function startLevel26(container, onComplete){
   const GRID_SIZE = 5;
   const TILE_SIZE = 120;
   const GAP = 4;
-  const IMAGE_PATH = "images/img9.png";
+  const IMAGE_PATH = "images/img26.png";
 
   container.innerHTML = `
   <style>
