@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // LOAD IMAGE FOR LEVEL
     function loadLevel(levelNumber) {
       gameArea.innerHTML = `
-        <img src="images/img${levelNumber}.PNG" width="250"><br><br>
+        <img src="./images/img${levelNumber}.PNG" width="250"><br><br>
         <p>Click below to complete this level.</p>
         <button id="complete-btn">Complete Level</button>
       `;

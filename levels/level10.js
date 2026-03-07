@@ -35,7 +35,7 @@ function startLevel10(container, onComplete){
           piece.style.position = "absolute";
           piece.style.left = x*pieceSize + "px";
           piece.style.top = y*pieceSize + "px";
-          piece.style.backgroundImage = "url('images/img10.PNG')";
+          piece.style.backgroundImage = "url('./images/img10.PNG')";
           piece.style.backgroundSize = (size*pieceSize) + "px " + (size*pieceSize) + "px";
           piece.style.backgroundPosition = `-${x*pieceSize}px -${y*pieceSize}px`;
           piece.style.border = "1px solid rgba(255,255,255,0.5)";

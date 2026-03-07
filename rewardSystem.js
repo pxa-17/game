@@ -18,8 +18,8 @@ function showReward(levelNumber) {
   wrapper.appendChild(img);
   rewardImageContainer.appendChild(wrapper);
 
-  // Use direct download link
-  downloadBtn.href = `./images/img${levelNumber}.PNG`;
+  // Use absolute URL for download
+  downloadBtn.href = `https://pxa-17.github.io/pxa-17/images/img${levelNumber}.PNG`;
   downloadBtn.download = `img${levelNumber}.PNG`;
   
   continueBtn.onclick = () => showScreen("map");
