@@ -6,57 +6,77 @@ function startLevel38(container, onComplete){
     <div class="level-game-area">
     <style>
     .shadow-game{
-      width: 600px;
-      margin: 30px auto;
+      max-width:650px;
+      width:100%;
+      margin:30px auto;
       font-family:'Segoe UI',sans-serif;
       text-align:center;
+      background:#ffffff;
+      padding:25px;
+      border-radius:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      box-sizing:border-box;
     }
+
     .shadows-container{
       display:flex;
       justify-content:center;
+      align-items:center;
       gap:20px;
       margin-top:20px;
       flex-wrap:wrap;
     }
+
     .shadow{
-      width:80px;
-      height:80px;
-      background:#ccc;
-      border-radius:10px;
+      width:85px;
+      height:85px;
+      background:#f3f3f3;
+      border-radius:12px;
       display:flex;
       justify-content:center;
       align-items:center;
-      font-size:50px;
-      opacity:0.3;
-      position:relative;
+      font-size:48px;
+      opacity:0.35;
+      border:2px dashed #ddd;
+      transition:0.2s;
     }
+
     .items-container{
       display:flex;
       justify-content:center;
+      align-items:center;
       gap:20px;
-      margin-top:20px;
+      margin-top:25px;
       flex-wrap:wrap;
     }
+
     .item{
-      width:80px;
-      height:80px;
-      border-radius:10px;
-      font-size:50px;
+      width:85px;
+      height:85px;
+      border-radius:12px;
+      font-size:48px;
       display:flex;
       justify-content:center;
       align-items:center;
-      background:#ffb3cc;
+      background:linear-gradient(145deg,#ff7aa5,#ff4d88);
       color:white;
-      font-weight:bold;
       cursor:pointer;
       user-select:none;
       position:relative;
-      transition:0.2s;
+      transition:all 0.2s ease;
+      box-shadow:0 5px 12px rgba(0,0,0,0.15);
     }
+
+    .item:hover{
+      transform:scale(1.1);
+      box-shadow:0 8px 18px rgba(0,0,0,0.2);
+    }
+
     .message{
-      margin-top:15px;
+      margin-top:18px;
       font-weight:bold;
-      min-height:20px;
+      min-height:22px;
+      font-size:16px;
     }
     </style>
 
