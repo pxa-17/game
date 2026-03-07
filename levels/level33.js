@@ -3,10 +3,11 @@ function startLevel33(container, onComplete){
   <div class="level-card">
     <h2 class="level-title">Level 33 – Color Pattern</h2>
     <p class="level-subtitle">Sort balls by color into tubes</p>
-    <div class="level-game-area">
+    <div class="level-game-area" style="display:flex; justify-content:center; flex-wrap:wrap;">
     <style>
     .ball-sort-card{
       width: 750px;
+      max-width: 95%;
       margin: 30px auto;
       padding: 20px;
       background: #2c2c2c;
@@ -27,6 +28,7 @@ function startLevel33(container, onComplete){
       justify-content: center;
       gap: 15px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
     .tube{
       width: 60px;
