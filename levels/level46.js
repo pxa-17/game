@@ -76,15 +76,29 @@ function startLevel46(container, onComplete) {
       margin-bottom:20px;
     }
 
-    .downloadBtn{
+    .btnRow{
       margin-top:25px;
-      padding:12px 30px;
-      background:#ff4da6;
-      color:white;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .downloadBtn, .homeBtn{
+      padding:12px 28px;
       border:none;
       border-radius:8px;
       font-size:15px;
       cursor:pointer;
+      color:white;
+    }
+
+    .downloadBtn{
+      background:#ff4da6;
+    }
+
+    .homeBtn{
+      background:#444;
     }
 
     </style>
@@ -98,12 +112,15 @@ function startLevel46(container, onComplete) {
 
     <button id="resetBtn" class="resetBtn">Reset</button>
 
+    <div id="finalMessageArea"></div>
+
   </div>
   `;
 
   const grid = container.querySelector("#grid");
   const info = container.querySelector("#info");
   const resetBtn = container.querySelector("#resetBtn");
+  const finalMessageArea = container.querySelector("#finalMessageArea");
 
   let numbers;
 
@@ -119,6 +136,7 @@ function startLevel46(container, onComplete) {
     shuffle();
     render();
     info.textContent = "Arrange numbers from 1 to 15";
+    finalMessageArea.innerHTML = "";
   };
 
   function render(){
@@ -175,7 +193,7 @@ function startLevel46(container, onComplete) {
 
   function showFinalMessage(){
 
-    container.innerHTML = `
+    finalMessageArea.innerHTML = `
 
       <div class="finalCard" id="finalCard">
 
@@ -206,32 +224,33 @@ function startLevel46(container, onComplete) {
       I’m really lucky to have you in my life ❤️
       <br><br>
 
-      Because...
-      <br><br>
-
       <b>Picture Abhi Baki Hai Mere Dost.</b>
       </p>
 
-      <button id="downloadBtn" class="downloadBtn">Download</button>
+      <div class="btnRow">
+        <button id="downloadBtn" class="downloadBtn">Download</button>
+        <button id="homeBtn" class="homeBtn">Go to Home</button>
+      </div>
 
       </div>
     `;
 
     const downloadBtn = document.getElementById("downloadBtn");
+    const homeBtn = document.getElementById("homeBtn");
 
     downloadBtn.onclick = ()=>{
-
       const card = document.getElementById("finalCard");
 
       html2canvas(card).then(canvas=>{
-
         const link = document.createElement("a");
         link.download = "our_6_months.png";
         link.href = canvas.toDataURL();
         link.click();
-
       });
+    };
 
+    homeBtn.onclick = ()=>{
+      location.reload();
     };
 
     if(onComplete){
