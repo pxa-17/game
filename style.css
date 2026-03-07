@@ -276,6 +276,10 @@ body::before {
   margin-bottom: 20px;
 }
 
+#downloadBtn {
+  margin-bottom: 15px;
+}
+
 /* ==================== LEVEL MAP ==================== */
 
 #levelMap {

@@ -19,6 +19,8 @@ function showReward(levelNumber) {
   rewardImageContainer.appendChild(wrapper);
 
   downloadBtn.href = `images/img${levelNumber}.png`;
+  downloadBtn.download = `img${levelNumber}.png`;
+  downloadBtn.target = "_blank";
 
   continueBtn.onclick = () => showScreen("map");
 }
