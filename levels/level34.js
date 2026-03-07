@@ -6,7 +6,8 @@ function startLevel34(container, onComplete){
     <div class="level-game-area">
     <style>
     .light-puzzle{
-      width: 700px;
+      max-width: 700px;
+      width: 100%;
       margin: 30px auto;
       background: #1a1a1a;
       padding: 20px;
@@ -14,6 +15,7 @@ function startLevel34(container, onComplete){
       font-family:'Segoe UI',sans-serif;
       color:#fff;
       text-align:center;
+      box-sizing: border-box;
     }
     .instructions{
       font-size:16px;
@@ -27,6 +29,8 @@ function startLevel34(container, onComplete){
       background:#111;
       border:2px solid #ff7aa5;
       border-radius:10px;
+      max-width:100%;
+      height:auto;
     }
     .filters{
       margin-top:15px;
