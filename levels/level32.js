@@ -86,7 +86,7 @@ function startLevel32(container, onComplete){
 
       <div class="level-card-inner">
         <div class="instructions">Enter the correct word to reveal the reward image!</div>
-        <div class="hint">💡 Hint: It is the first day of the week.</div>
+        <div class="hint">💡 Hint: The day you joined.</div>
         <input type="text" id="codeInput" class="code-input" maxlength="10" placeholder="Enter code">
         <br>
         <button class="submit-btn" id="submitBtn">Submit</button>
