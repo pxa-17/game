@@ -6,43 +6,64 @@ function startLevel37(container, onComplete){
     <div class="level-game-area">
     <style>
     .potion-lab{
-      width: 600px;
-      margin: 30px auto;
-      text-align: center;
+      max-width:600px;
+      width:100%;
+      margin:30px auto;
+      text-align:center;
       font-family:'Segoe UI',sans-serif;
+      background:#ffffff;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      box-sizing:border-box;
     }
+
     .ingredients{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      gap:15px;
+      margin-top:20px;
+      max-width:100%;
     }
+
     .ingredient-btn{
-      width: 80px;
-      height: 80px;
-      font-size: 30px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: 2px solid #fff;
-      background: #ffb3cc;
-      color: #fff;
-      transition: 0.2s;
+      width:80px;
+      height:80px;
+      font-size:32px;
+      cursor:pointer;
+      border-radius:12px;
+      border:none;
+      background:linear-gradient(145deg,#ff7aa5,#ff4d88);
+      color:#fff;
+      transition:all 0.2s ease;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
     }
+
     .ingredient-btn:hover{
-      transform: scale(1.1);
+      transform:scale(1.12);
+      box-shadow:0 6px 14px rgba(0,0,0,0.2);
     }
+
     .current-sequence{
-      margin-top: 15px;
-      font-size: 24px;
-      min-height: 30px;
+      margin-top:20px;
+      font-size:26px;
+      min-height:35px;
       color:#ff4d88;
       font-weight:bold;
+      letter-spacing:5px;
     }
+
     .message{
-      margin-top: 10px;
-      min-height: 20px;
+      margin-top:12px;
+      min-height:22px;
       font-weight:bold;
+      font-size:16px;
+      color:#333;
     }
     </style>
 
