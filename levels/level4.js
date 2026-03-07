@@ -16,7 +16,7 @@ function startLevel4(container, onComplete) {
     const puzzleArea = document.getElementById("puzzleArea");
     const gridSize = 3;
     const pieceSize = 100;
-    const imageSrc = "images/img4.png";
+    const imageSrc = "images/img4.PNG";
   
     const positions = [];
     for (let r = 0; r < gridSize; r++) {

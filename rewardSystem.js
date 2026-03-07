@@ -11,14 +11,16 @@ function showReward(levelNumber) {
   wrapper.classList.add("rewardWrapper");
 
   const img = document.createElement("img");
-  img.src = `images/img${levelNumber}.png`;
+  img.src = `./images/img${levelNumber}.PNG`;
   img.classList.add("rewardImage");
-  img.style.display = "none"; // Hide image, only allow download
+  img.style.display = "none";
 
   wrapper.appendChild(img);
   rewardImageContainer.appendChild(wrapper);
 
-  downloadBtn.href = `images/img${levelNumber}.png`;
-
+  // Use direct download link
+  downloadBtn.href = `./images/img${levelNumber}.PNG`;
+  downloadBtn.download = `img${levelNumber}.PNG`;
+  
   continueBtn.onclick = () => showScreen("map");
 }
