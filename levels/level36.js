@@ -6,35 +6,59 @@ function startLevel36(container, onComplete){
     <div class="level-game-area">
     <style>
     .matching-game{
-      width: 600px;
+      max-width: 600px;
+      width: 100%;
       margin: 30px auto;
       text-align: center;
       font-family:'Segoe UI',sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      box-sizing:border-box;
     }
+
     .cards{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      margin-top:20px;
+      max-width:100%;
     }
+
     .card{
-      width: 120px;
-      height: 60px;
-      background: #ffb3cc;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-weight: bold;
-      color: #fff;
-      font-size: 16px;
-      transition: 0.3s;
-      user-select: none;
+      width:120px;
+      height:60px;
+      background:#ffb3cc;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-weight:bold;
+      color:#fff;
+      font-size:16px;
+      transition:0.3s;
+      user-select:none;
     }
+
     .card.flipped{
-      background: #ff4d88;
+      background:#ff4d88;
+    }
+
+    .message{
+      margin-top:15px;
+      font-weight:bold;
+      min-height:20px;
+      text-align:center;
+    }
+
+    .matches-remaining{
+      font-weight:bold;
+      margin-top:10px;
+      color:#ff4d88;
+      text-align:center;
     }
     .message{
       margin-top: 15px;
