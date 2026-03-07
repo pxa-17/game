@@ -65,7 +65,7 @@ function startLevel27(container, onComplete){
   </style>
 
   <div class="balance-card">
-    <h3>⚖️ Level 28 – Balance Game ⚖️</h3>
+    <h3>⚖️ Level 27 – Balance Game ⚖️</h3>
     <div class="plank" id="plank"></div>
     <div class="ball" id="ball"></div>
     <div class="score" id="score">Time: 0s</div>
@@ -132,7 +132,7 @@ function startLevel27(container, onComplete){
     if(ballPos < plankLeft || ballPos > plankRight){
       gameOver = true;
       alert("💥 Ball fell! Try again.");
-      startLevel28(container, onComplete);
+      startLevel27(container, onComplete);
       return;
     }
 
