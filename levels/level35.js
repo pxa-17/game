@@ -6,7 +6,8 @@ function startLevel35(container, onComplete){
     <div class="level-game-area">
     <style>
     .platformer-game{
-      width: 800px;
+      max-width: 800px;
+      width: 100%;
       margin: 30px auto;
       background: #111;
       padding: 20px;
@@ -15,6 +16,16 @@ function startLevel35(container, onComplete){
       font-family:'Segoe UI',sans-serif;
       color:#fff;
       overflow: hidden;
+      box-sizing: border-box;
+    }
+    #platformerCanvas{
+      display:block;
+      margin:0 auto;
+      background:#222;
+      border:2px solid #ff6f91;
+      border-radius:10px;
+      max-width:100%;
+      height:auto;
     }
     canvas{
       display:block;
