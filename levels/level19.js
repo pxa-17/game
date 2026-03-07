@@ -18,8 +18,8 @@ function startLevel19(container, onComplete){
 
     .grid{
       display:grid;
-      grid-template-columns:repeat(20, 26px);
-      grid-template-rows:repeat(12, 26px);
+      grid-template-columns:repeat(20, 24px);
+      grid-template-rows:repeat(16, 24px);
       gap:1px;
       background:#ff4da6;
       border-radius:6px;
@@ -29,8 +29,8 @@ function startLevel19(container, onComplete){
 
     @media (min-width: 600px) {
       .grid{
-        grid-template-columns:repeat(20, 30px);
-        grid-template-rows:repeat(12, 30px);
+        grid-template-columns:repeat(20, 28px);
+        grid-template-rows:repeat(16, 28px);
       }
     }
 
@@ -39,7 +39,7 @@ function startLevel19(container, onComplete){
       align-items:center;
       justify-content:center;
       font-weight:bold;
-      font-size:10px;
+      font-size:9px;
       background:#fff;
       cursor:pointer;
       color:#333;
@@ -111,7 +111,7 @@ function startLevel19(container, onComplete){
   `;
 
   const COLS = 20;
-  const ROWS = 12;
+  const ROWS = 16;
   const wordGrid = container.querySelector("#wordGrid");
   const wordListEl = container.querySelector("#wordList");
 
@@ -144,12 +144,11 @@ function startLevel19(container, onComplete){
     words.forEach(({word})=>{
       const w = word.toUpperCase();
       let placed = false;
-      let attempts = 0;
-      while(!placed && attempts < 100){
-        attempts++;
+      // Keep trying until word is placed (no attempt limit)
+      while(!placed){
         const dir = directions[Math.floor(Math.random()*directions.length)];
-        const row = Math.floor(Math.random()*(ROWS - w.length));
-        const col = Math.floor(Math.random()*(COLS - w.length));
+        const row = Math.floor(Math.random()*(ROWS - w.length + 1));
+        const col = Math.floor(Math.random()*(COLS - w.length + 1));
         let fits = true;
         for(let i=0;i<w.length;i++){
           let r = row + dir[0]*i;
